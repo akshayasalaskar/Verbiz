@@ -71,149 +71,139 @@ export function Table() {
   };
 
   return (
-    <div className="w-full">
-      <Card className="h-full">
-        <CardHeader floated={false} shadow={false} className="rounded-none">
-          <div className="mb-4 flex flex-col justify-between gap-8 md:flex-row md:items-center">
-            <div>
-              <Typography variant="h5" color="blue-gray">
-                Organisations
-              </Typography>
-              <Typography color="gray" className="mt-1 font-normal">
-                List of organisations
-              </Typography>
-            </div>
-            <div className="flex w-full shrink-0 gap-2 md:w-max">
-              <div className="w-full md:w-72">
-                <Input
-                  label="Search"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  icon={<MagnifyingGlassIcon className="h-5 w-5" />}
-                />
-              </div>
-              <Button className="flex items-center gap-3" size="sm">
-                <ArrowDownTrayIcon strokeWidth={2} className="h-4 w-4" />{" "}
-                Download
-              </Button>
-            </div>
+    <Card className=" w-full h-[calc(95vh-2rem)]">
+      <CardHeader floated={false} shadow={false} className="rounded-none">
+        <div className="mb-4 flex flex-col justify-between gap-8 md:flex-row md:items-center">
+          <div>
+            <Typography variant="h5" color="blue-gray">
+              Organisations
+            </Typography>
+            <Typography color="gray" className="mt-1 font-normal">
+              List of organisations
+            </Typography>
           </div>
-        </CardHeader>
-        <CardBody className="overflow-scroll px-0">
-          <table className="w-full min-w-max table-auto text-left">
-            <thead>
-              <tr>
-                {TABLE_HEAD.map((head) => (
-                  <th
-                    key={head}
-                    className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 cursor-pointer"
-                    onClick={() => handleSort(head)}
+          <div className="flex w-full shrink-0 gap-2 md:w-max">
+            <div className="w-full md:w-72">
+              <Input
+                label="Search"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                icon={<MagnifyingGlassIcon className="h-5 w-5" />}
+              />
+            </div>
+            <Button className="flex items-center gap-3" size="sm">
+              <ArrowDownTrayIcon strokeWidth={2} className="h-4 w-4" /> Download
+            </Button>
+          </div>
+        </div>
+      </CardHeader>
+      <CardBody className="overflow-scroll px-0">
+        <table className="w-full min-w-max table-auto text-left">
+          <thead>
+            <tr>
+              {TABLE_HEAD.map((head) => (
+                <th
+                  key={head}
+                  className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 cursor-pointer"
+                  onClick={() => handleSort(head)}
+                >
+                  <Typography
+                    variant="small"
+                    color="blue-gray"
+                    className="font-normal leading-none opacity-70"
                   >
-                    <Typography
-                      variant="small"
-                      color="blue-gray"
-                      className="font-normal leading-none opacity-70"
-                    >
-                      {head}
-                      {sortBy === head && (
-                        <span className="ml-1">
-                          {sortDirection === "asc" ? "↑" : "↓"}
-                        </span>
-                      )}
+                    {head}
+                    {sortBy === head && (
+                      <span className="ml-1">
+                        {sortDirection === "asc" ? "↑" : "↓"}
+                      </span>
+                    )}
+                  </Typography>
+                </th>
+              ))}
+              {/* ... */}
+            </tr>
+          </thead>
+          <tbody>
+            {currentItems.map(
+              ({
+                organisationID,
+                organisationName,
+                type,
+                registrationDate,
+                email,
+                availability,
+              }) => (
+                <tr key={organisationID}>
+                  <td className="p-4 border-b border-blue-gray-50">
+                    <Typography variant="small" color="blue-gray">
+                      {organisationID}
                     </Typography>
-                  </th>
-                ))}
-                {/* ... */}
-              </tr>
-            </thead>
-            <tbody>
-              {currentItems.map(
-                ({
-                  organisationID,
-                  organisationName,
-                  type,
-                  registrationDate,
-                  email,
-                  availability,
-                }) => (
-                  <tr key={organisationID}>
-                    <td className="p-4 border-b border-blue-gray-50">
-                      <Typography variant="small" color="blue-gray">
-                        {organisationID}
-                      </Typography>
-                    </td>
-                    <td className="p-4 border-b border-blue-gray-50">
-                      <Typography variant="small" color="blue-gray">
-                        {organisationName}
-                      </Typography>
-                    </td>
-                    <td className="p-4 border-b border-blue-gray-50">
-                      <Typography variant="small" color="blue-gray">
-                        {type}
-                      </Typography>
-                    </td>
-                    <td className="p-4 border-b border-blue-gray-50">
-                      <Typography variant="small" color="blue-gray">
-                        {registrationDate}
-                      </Typography>
-                    </td>
-                    <td className="p-4 border-b border-blue-gray-50">
-                      <Typography variant="small" color="blue-gray">
-                        {email}
-                      </Typography>
-                    </td>
-                    <td className="p-4 border-b border-blue-gray-50">
-                      <Chip
-                        size="sm"
-                        variant="ghost"
-                        value={availability}
-                        color={availability === "Active" ? "green" : "red"}
-                      />
-                    </td>
-                    <td className="p-4 border-b border-blue-gray-50">
-                      <Tooltip content="Delete Organisation">
-                        <IconButton variant="text">
-                          <TrashIcon className="h-4 w-4 text-red-500" />
-                        </IconButton>
-                      </Tooltip>
-                    </td>
-                  </tr>
-                )
-              )}
-            </tbody>
-          </table>
-        </CardBody>
-        <CardFooter className="flex items-center justify-between border-t border-blue-gray-50 p-4">
-          <Button
-            variant="outlined"
-            size="sm"
-            disabled={currentPage === 1}
-            onClick={() => handleChangePage("prev")}
-          >
-            Previous
-          </Button>
-          <div className="flex items-center gap-2">
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-              <Button
-                key={page}
-                variant={currentPage === page ? "filled" : "outlined"}
-                size="sm"
-                onClick={() => setCurrentPage(page)}
-              >
-                {page}
-              </Button>
-            ))}
-          </div>
-          <Button
-            variant="outlined"
-            size="sm"
-            disabled={currentPage === totalPages}
-            onClick={() => handleChangePage("next")}
-          >
-            Next
-          </Button>
-        </CardFooter>
-      </Card>
-    </div>
+                  </td>
+                  <td className="p-4 border-b border-blue-gray-50">
+                    <Typography variant="small" color="blue-gray">
+                      {organisationName}
+                    </Typography>
+                  </td>
+                  <td className="p-4 border-b border-blue-gray-50">
+                    <Typography variant="small" color="blue-gray">
+                      {type}
+                    </Typography>
+                  </td>
+                  <td className="p-4 border-b border-blue-gray-50">
+                    <Typography variant="small" color="blue-gray">
+                      {registrationDate}
+                    </Typography>
+                  </td>
+                  <td className="p-4 border-b border-blue-gray-50">
+                    <Typography variant="small" color="blue-gray">
+                      {email}
+                    </Typography>
+                  </td>
+                  <td className="p-4 border-b border-blue-gray-50">
+                    <Chip
+                      size="sm"
+                      variant="ghost"
+                      value={availability}
+                      color={availability === "Active" ? "green" : "red"}
+                    />
+                  </td>
+                </tr>
+              )
+            )}
+          </tbody>
+        </table>
+      </CardBody>
+      <CardFooter className="flex items-center justify-between border-t border-blue-gray-50 p-4">
+        <Button
+          variant="outlined"
+          size="sm"
+          disabled={currentPage === 1}
+          onClick={() => handleChangePage("prev")}
+        >
+          Previous
+        </Button>
+        <div className="flex items-center gap-2">
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+            <Button
+              key={page}
+              variant={currentPage === page ? "filled" : "outlined"}
+              size="sm"
+              onClick={() => setCurrentPage(page)}
+            >
+              {page}
+            </Button>
+          ))}
+        </div>
+        <Button
+          variant="outlined"
+          size="sm"
+          disabled={currentPage === totalPages}
+          onClick={() => handleChangePage("next")}
+        >
+          Next
+        </Button>
+      </CardFooter>
+    </Card>
   );
 }

@@ -9,7 +9,7 @@ const Header = () => {
       <div className="w-1/5 flex items-center">
         <FontAwesomeIcon icon={faFacebook} />
       </div>
-      <div className="flex flex-row w-full justify-between">
+      <div className="flex flex-row w-4/5 justify-between">
         <div>Dashboard</div>
         <div className="flex justify-end items-center">
           <FontAwesomeIcon icon={faUser} className="mr-2" />
