@@ -239,34 +239,58 @@ export function Table() {
         </table>
       </CardBody>
       <CardFooter className="flex items-center justify-between border-t border-blue-gray-50 p-4">
-        <Button
-          variant="outlined"
-          size="sm"
-          disabled={currentPage === 1}
-          onClick={() => handleChangePage("prev")}
-        >
-          Previous
-        </Button>
-        <div className="flex items-center gap-2">
-          {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-            <Button
-              key={page}
-              variant={currentPage === page ? "filled" : "outlined"}
-              size="sm"
-              onClick={() => setCurrentPage(page)}
-            >
-              {page}
+        <div className="results">Showing 123 to 128 of 170 entries</div>
+        <div className="flex items-center justify-between border-t border-blue-gray-50 p-4">
+          <Button
+            variant="outlined"
+            size="sm"
+            disabled={currentPage === 1}
+            onClick={() => handleChangePage("prev")}
+            className="mr-2"
+          >
+            Previous
+          </Button>
+          <div className="flex items-center gap-2">
+            {currentPage > 1 && (
+              <>
+                <Button
+                  variant="outlined"
+                  size="sm"
+                  onClick={() => setCurrentPage(1)}
+                >
+                  1
+                </Button>
+                {currentPage > 2 && <span className="mx-1">...</span>}
+              </>
+            )}
+            <Button key={currentPage} variant="filled" size="sm">
+              {currentPage}
             </Button>
-          ))}
+            {currentPage < totalPages && (
+              <>
+                {currentPage < totalPages - 1 && (
+                  <span className="mx-1">...</span>
+                )}
+                <Button
+                  variant="outlined"
+                  size="sm"
+                  onClick={() => setCurrentPage(totalPages)}
+                >
+                  {totalPages}
+                </Button>
+              </>
+            )}
+          </div>
+          <Button
+            variant="outlined"
+            size="sm"
+            disabled={currentPage === totalPages}
+            onClick={() => handleChangePage("next")}
+            className="ml-2"
+          >
+            Next
+          </Button>
         </div>
-        <Button
-          variant="outlined"
-          size="sm"
-          disabled={currentPage === totalPages}
-          onClick={() => handleChangePage("next")}
-        >
-          Next
-        </Button>
       </CardFooter>
     </Card>
   );
