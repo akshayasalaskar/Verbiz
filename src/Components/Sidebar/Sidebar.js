@@ -1,4 +1,6 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { setSelectedOption } from "../../redux/actions";
 
 import {
   Card,
@@ -19,53 +21,79 @@ import {
 } from "@heroicons/react/24/solid";
 
 export function Sidebar() {
+  const dispatch = useDispatch();
+
+  const handleSidebarClick = (option) => {
+    dispatch(setSelectedOption(option));
+  };
   return (
     <Card className="h-[calc(100vh-2rem)] w-1/5 max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5">
       <List>
-        <ListItem>
+        <ListItem onClick={() => handleSidebarClick("Dashboard")}>
           <ListItemPrefix>
             <PresentationChartBarIcon className="h-5 w-5" />
           </ListItemPrefix>
           Dashboard
         </ListItem>
-        <ListItem>
+        <ListItem onClick={() => handleSidebarClick("Organisation")}>
           <ListItemPrefix>
             <ShoppingBagIcon className="h-5 w-5" />
           </ListItemPrefix>
-          E-Commerce
+          Organisation
         </ListItem>
-        <ListItem>
+        <ListItem onClick={() => handleSidebarClick("QR Code")}>
           <ListItemPrefix>
             <InboxIcon className="h-5 w-5" />
           </ListItemPrefix>
-          Inbox
-          <ListItemSuffix>
-            <Chip
-              value="14"
-              size="sm"
-              variant="ghost"
-              color="blue-gray"
-              className="rounded-full"
-            />
-          </ListItemSuffix>
+          QR Code
         </ListItem>
-        <ListItem>
+        <ListItem onClick={() => handleSidebarClick("Customer")}>
           <ListItemPrefix>
             <UserCircleIcon className="h-5 w-5" />
           </ListItemPrefix>
-          Profile
+          Customer
         </ListItem>
-        <ListItem>
+        <ListItem onClick={() => handleSidebarClick("DashSettingsboard")}>
           <ListItemPrefix>
             <Cog6ToothIcon className="h-5 w-5" />
           </ListItemPrefix>
           Settings
         </ListItem>
-        <ListItem>
+        <ListItem onClick={() => handleSidebarClick("Food & Beverages")}>
           <ListItemPrefix>
             <PowerIcon className="h-5 w-5" />
           </ListItemPrefix>
-          Log Out
+          Food & Beverages
+        </ListItem>
+        <ListItem onClick={() => handleSidebarClick("Room Services")}>
+          <ListItemPrefix>
+            <PowerIcon className="h-5 w-5" />
+          </ListItemPrefix>
+          Room Services
+        </ListItem>
+        <ListItem onClick={() => handleSidebarClick("Complaint")}>
+          <ListItemPrefix>
+            <PowerIcon className="h-5 w-5" />
+          </ListItemPrefix>
+          Complaint
+        </ListItem>
+        <ListItem onClick={() => handleSidebarClick("Feedback")}>
+          <ListItemPrefix>
+            <PowerIcon className="h-5 w-5" />
+          </ListItemPrefix>
+          Feedback
+        </ListItem>
+        <ListItem onClick={() => handleSidebarClick("Terms")}>
+          <ListItemPrefix>
+            <PowerIcon className="h-5 w-5" />
+          </ListItemPrefix>
+          Terms
+        </ListItem>
+        <ListItem onClick={() => handleSidebarClick("Logout")}>
+          <ListItemPrefix>
+            <PowerIcon className="h-5 w-5" />
+          </ListItemPrefix>
+          Logout
         </ListItem>
       </List>
     </Card>
