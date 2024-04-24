@@ -56,6 +56,7 @@ export function Table() {
 
   // Pagination
   const totalPages = Math.ceil(sortedRows.length / itemsPerPage);
+
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = sortedRows.slice(indexOfFirstItem, indexOfLastItem);
@@ -239,7 +240,12 @@ export function Table() {
         </table>
       </CardBody>
       <CardFooter className="flex items-center justify-between border-t border-blue-gray-50 p-4">
-        <div className="results">Showing 123 to 128 of 170 entries</div>
+        <div className="results">
+          {`Showing  ${indexOfFirstItem + parseInt(123)} to 
+          ${indexOfLastItem + parseInt(122)} of ${
+            TABLE_ROWS.length + parseInt(122)
+          } entries `}
+        </div>
         <div className="flex items-center justify-between border-t border-blue-gray-50 p-4">
           <Button
             variant="outlined"
@@ -266,6 +272,7 @@ export function Table() {
             <Button key={currentPage} variant="filled" size="sm">
               {currentPage}
             </Button>
+
             {currentPage < totalPages && (
               <>
                 {currentPage < totalPages - 1 && (

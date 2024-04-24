@@ -53,7 +53,7 @@ export function Sidebar() {
           </ListItemPrefix>
           Customer
         </ListItem>
-        <ListItem onClick={() => handleSidebarClick("DashSettingsboard")}>
+        <ListItem onClick={() => handleSidebarClick("Settings")}>
           <ListItemPrefix>
             <Cog6ToothIcon className="h-5 w-5" />
           </ListItemPrefix>
