@@ -27,13 +27,20 @@ export function Table() {
   const [sortBy, setSortBy] = useState(null);
   const [sortDirection, setSortDirection] = useState("asc"); // 'asc' or 'desc'
   const itemsPerPage = 5;
+  const [selectedOption, setSelectedOption] = useState("");
+
+  const handleSelectChange = (event) => {
+    setSelectedOption(event.target.value);
+    setSearchTerm("");
+  };
 
   // Search functionality
-  const filteredRows = TABLE_ROWS.filter(
-    (row) =>
-      row.organisationID.toLowerCase().includes(searchTerm.toLowerCase()),
-    console.log("Search term", searchTerm.toLowerCase())
-  );
+  const filteredRows =
+    selectedOption === "option1"
+      ? TABLE_ROWS.filter((row) =>
+          row.organisationID.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+      : TABLE_ROWS;
 
   // Sorting functionality
   const sortedRows = [...filteredRows].sort((a, b) => {
@@ -69,18 +76,19 @@ export function Table() {
       setSortDirection("asc");
     }
   };
-
   return (
     <Card className=" w-full h-[calc(95vh-2rem)]">
       <CardHeader floated={false} shadow={false} className="rounded-none">
         <div className="mb-4 flex flex-col justify-between gap-8 md:flex-row md:items-center">
           <div>
-            <Typography variant="h5" color="blue-gray">
-              Organisations
-            </Typography>
-            <Typography color="gray" className="mt-1 font-normal">
-              List of organisations
-            </Typography>
+            <select
+              id="selectOptions"
+              value={selectedOption}
+              onChange={handleSelectChange}
+            >
+              <option value="">Select</option>
+              <option value="option1">Organisation Id</option>
+            </select>
           </div>
           <div className="flex w-full shrink-0 gap-2 md:w-max">
             <div className="w-full md:w-72">
@@ -92,7 +100,7 @@ export function Table() {
               />
             </div>
             <Button className="flex items-center gap-3" size="sm">
-              <ArrowDownTrayIcon strokeWidth={2} className="h-4 w-4" /> Download
+              Search
             </Button>
           </div>
         </div>
@@ -101,6 +109,34 @@ export function Table() {
         <table className="w-full min-w-max table-auto text-left">
           <thead>
             <tr>
+              <th class="inline-flex items-center">
+                <label
+                  class="relative flex items-center p-3 rounded-full cursor-pointer"
+                  htmlFor="check"
+                >
+                  <input
+                    type="checkbox"
+                    class="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:before:opacity-10"
+                    id="check"
+                  />
+                  <span class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-3.5 w-3.5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      stroke="currentColor"
+                      stroke-width="1"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                  </span>
+                </label>
+              </th>
               {TABLE_HEAD.map((head) => (
                 <th
                   key={head}
@@ -135,6 +171,34 @@ export function Table() {
                 availability,
               }) => (
                 <tr key={organisationID}>
+                  <td class="inline-flex items-center">
+                    <label
+                      class="relative flex items-center p-3 rounded-full cursor-pointer"
+                      htmlFor="check"
+                    >
+                      <input
+                        type="checkbox"
+                        class="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:before:opacity-10"
+                        id="check"
+                      />
+                      <span class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="h-3.5 w-3.5"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                          stroke="currentColor"
+                          stroke-width="1"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                            clip-rule="evenodd"
+                          ></path>
+                        </svg>
+                      </span>
+                    </label>
+                  </td>
                   <td className="p-4 border-b border-blue-gray-50">
                     <Typography variant="small" color="blue-gray">
                       {organisationID}
