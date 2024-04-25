@@ -78,49 +78,59 @@ export function Table() {
     }
   };
   return (
-    <Card className=" w-full h-[calc(95vh-2rem)]">
-      <CardHeader floated={false} shadow={false} className="rounded-none">
-        <div className="mb-4 flex flex-col justify-between gap-8 md:flex-row md:items-center">
-          <div>
-            <select
-              id="selectOptions"
-              value={selectedOption}
-              onChange={handleSelectChange}
-            >
-              <option value="">Select</option>
-              <option value="option1">Organisation Id</option>
-            </select>
-          </div>
-          <div className="flex w-full shrink-0 gap-2 md:w-max">
-            <div className="w-full md:w-72">
-              <Input
-                label="Search"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                icon={<MagnifyingGlassIcon className="h-5 w-5" />}
-              />
+    <Card className=" w-full h-[calc(95vh-2rem)] bg-customgray  ">
+      <CardHeader
+        floated={false}
+        shadow={false}
+        className="rounded-none flex justify-start items-center p-3 "
+      >
+        <div className=" ">
+          <div className="flex flex-col  bg-customwhite justify-between md:flex-row md:items-center">
+            <div className="border border-blue-gray-100 rounded-md">
+              <select
+                id="selectOptions"
+                value={selectedOption}
+                onChange={handleSelectChange}
+                className="w-20 mr-2  "
+              >
+                <option value="">Select</option>
+                <option value="option1">Organisation Id</option>
+              </select>
             </div>
-            <Button className="flex items-center gap-3" size="sm">
-              Search
-            </Button>
+            <div className="flex w-full shrink-0 gap-2 md:w-max">
+              <div className="w-full md:w-72">
+                <Input
+                  label="Search"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  icon={<MagnifyingGlassIcon className="h-5 w-5" />}
+                />
+              </div>
+              <Button
+                className="flex items-center gap-3  bg-customblue "
+                size="sm"
+              >
+                Search
+              </Button>
+            </div>
           </div>
         </div>
       </CardHeader>
-      <CardBody className="overflow-scroll px-0">
-        <table className="w-full min-w-max table-auto text-left">
+      <CardBody className=" mx-4 overflow-hidden px-0">
+        <table className="w-full min-w-max table-auto text-left  bg-customwhite ">
           <thead>
             <tr>
-              <th class="inline-flex items-center">
+              <th class="items-center border-y border-blue-gray-100 bg-customblue bg-opacity-20 p-2 cursor-pointer ">
                 <label
                   class="relative flex items-center p-3 rounded-full cursor-pointer"
                   htmlFor="check"
                 >
                   <input
                     type="checkbox"
-                    class="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:before:opacity-10"
+                    class="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-customblue transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:before:opacity-10"
                     id="check"
                   />
-                  <span class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                  <span class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-1/4 -translate-y-2/4 -translate-x-1/4 peer-checked:opacity-100">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="h-3.5 w-3.5"
@@ -141,13 +151,12 @@ export function Table() {
               {TABLE_HEAD.map((head) => (
                 <th
                   key={head}
-                  className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 cursor-pointer"
+                  className="border-y border-blue-gray-100 bg-customblue bg-opacity-20  p-2 cursor-pointer"
                   onClick={() => handleSort(head)}
                 >
                   <Typography
                     variant="small"
-                    color="blue-gray"
-                    className="font-normal leading-none opacity-70"
+                    className="font-normal  text-customblue leading-none opacity-70"
                   >
                     {head}
                     {sortBy === head && (
@@ -172,7 +181,7 @@ export function Table() {
                 availability,
               }) => (
                 <tr key={organisationID}>
-                  <td class="inline-flex items-center">
+                  <td class="p-2 border-b border-blue-gray-50">
                     <label
                       class="relative flex items-center p-3 rounded-full cursor-pointer"
                       htmlFor="check"
@@ -239,7 +248,7 @@ export function Table() {
           </tbody>
         </table>
       </CardBody>
-      <CardFooter className="flex items-center justify-between border-t border-blue-gray-50 p-4">
+      <CardFooter className="flex items-center justify-between border-t border-blue-gray-50 pt-0">
         <div className="results">
           {`Showing  ${indexOfFirstItem + parseInt(123)} to 
           ${indexOfLastItem + parseInt(122)} of ${
@@ -269,7 +278,11 @@ export function Table() {
                 {currentPage > 2 && <span className="mx-1">...</span>}
               </>
             )}
-            <Button key={currentPage} variant="filled" size="sm">
+            <Button
+              key={currentPage}
+              className=" text-white bg-customblue "
+              size="sm"
+            >
               {currentPage}
             </Button>
 

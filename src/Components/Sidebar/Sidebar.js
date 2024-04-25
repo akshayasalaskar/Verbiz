@@ -8,17 +8,17 @@ import {
   List,
   ListItem,
   ListItemPrefix,
-  ListItemSuffix,
-  Chip,
 } from "@material-tailwind/react";
-import {
-  PresentationChartBarIcon,
-  ShoppingBagIcon,
-  UserCircleIcon,
-  Cog6ToothIcon,
-  InboxIcon,
-  PowerIcon,
-} from "@heroicons/react/24/solid";
+import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined";
+import CorporateFareOutlinedIcon from "@mui/icons-material/CorporateFareOutlined";
+import QrCodeOutlinedIcon from "@mui/icons-material/QrCodeOutlined";
+import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
+import RestaurantOutlinedIcon from "@mui/icons-material/RestaurantOutlined";
+import RoomServiceOutlinedIcon from "@mui/icons-material/RoomServiceOutlined";
+import SupportAgentOutlinedIcon from "@mui/icons-material/SupportAgentOutlined";
+import ChatOutlinedIcon from "@mui/icons-material/ChatOutlined";
+import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
+import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 
 export function Sidebar() {
   const dispatch = useDispatch();
@@ -27,71 +27,66 @@ export function Sidebar() {
     dispatch(setSelectedOption(option));
   };
   return (
-    <Card className="h-[calc(100vh-2rem)] w-1/5 max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5">
+    <Card className="h-[calc(95vh-2rem)] w-1/5 max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5">
       <List>
         <ListItem onClick={() => handleSidebarClick("Dashboard")}>
           <ListItemPrefix>
-            <PresentationChartBarIcon className="h-5 w-5" />
+            <DashboardOutlinedIcon className="" />
           </ListItemPrefix>
           Dashboard
         </ListItem>
         <ListItem onClick={() => handleSidebarClick("Organisation")}>
           <ListItemPrefix>
-            <ShoppingBagIcon className="h-5 w-5" />
+            <CorporateFareOutlinedIcon className="" />
           </ListItemPrefix>
           Organisation
         </ListItem>
         <ListItem onClick={() => handleSidebarClick("QR Code")}>
           <ListItemPrefix>
-            <InboxIcon className="h-5 w-5" />
+            <QrCodeOutlinedIcon className="" />
           </ListItemPrefix>
           QR Code
         </ListItem>
         <ListItem onClick={() => handleSidebarClick("Customer")}>
           <ListItemPrefix>
-            <UserCircleIcon className="h-5 w-5" />
+            <PermIdentityOutlinedIcon className="" />
           </ListItemPrefix>
           Customer
         </ListItem>
-        <ListItem onClick={() => handleSidebarClick("Settings")}>
-          <ListItemPrefix>
-            <Cog6ToothIcon className="h-5 w-5" />
-          </ListItemPrefix>
-          Settings
-        </ListItem>
+
         <ListItem onClick={() => handleSidebarClick("Food & Beverages")}>
           <ListItemPrefix>
-            <PowerIcon className="h-5 w-5" />
+            <RestaurantOutlinedIcon className="" />
           </ListItemPrefix>
           Food & Beverages
         </ListItem>
         <ListItem onClick={() => handleSidebarClick("Room Services")}>
           <ListItemPrefix>
-            <PowerIcon className="h-5 w-5" />
+            <RoomServiceOutlinedIcon className="" />
           </ListItemPrefix>
           Room Services
         </ListItem>
         <ListItem onClick={() => handleSidebarClick("Complaint")}>
           <ListItemPrefix>
-            <PowerIcon className="h-5 w-5" />
+            <SupportAgentOutlinedIcon className="" />
           </ListItemPrefix>
           Complaint
         </ListItem>
         <ListItem onClick={() => handleSidebarClick("Feedback")}>
           <ListItemPrefix>
-            <PowerIcon className="h-5 w-5" />
+            <ChatOutlinedIcon className="" />
           </ListItemPrefix>
           Feedback
         </ListItem>
         <ListItem onClick={() => handleSidebarClick("Terms")}>
           <ListItemPrefix>
-            <PowerIcon className="h-5 w-5" />
+            <GroupsOutlinedIcon className="" />
           </ListItemPrefix>
-          Terms
+          Teams
         </ListItem>
         <ListItem onClick={() => handleSidebarClick("Logout")}>
           <ListItemPrefix>
-            <PowerIcon className="h-5 w-5" />
+            <LogoutOutlinedIcon className="" />
           </ListItemPrefix>
           Logout
         </ListItem>
