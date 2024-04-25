@@ -12,9 +12,6 @@ import {
   CardBody,
   Chip,
   CardFooter,
-  Avatar,
-  IconButton,
-  Tooltip,
   Input,
 } from "@material-tailwind/react";
 
