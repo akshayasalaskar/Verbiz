@@ -88,7 +88,7 @@ export function Table() {
                 id="selectOptions"
                 value={selectedOption}
                 onChange={handleSelectChange}
-                className="w-32 mr-2 border-none outline-none  "
+                className="w-34 mr-2 border-none outline-none  "
               >
                 <option value="">Select</option>
                 <option value="option1">Organisation Id</option>
