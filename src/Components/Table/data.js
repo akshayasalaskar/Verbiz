@@ -392,4 +392,20 @@ export const TABLE_ROWS = [
     email: "wxy4@group.com",
     availability: "Inactive",
   },
+  {
+    organisationID: "ORG171",
+    organisationName: "WXY Group 4",
+    type: "Group",
+    registrationDate: "1976-11-10",
+    email: "wxy4@group.com",
+    availability: "Inactive",
+  },
+  {
+    organisationID: "ORG172",
+    organisationName: "WXY Group 4",
+    type: "Group",
+    registrationDate: "1976-11-10",
+    email: "wxy4@group.com",
+    availability: "Inactive",
+  },
 ];

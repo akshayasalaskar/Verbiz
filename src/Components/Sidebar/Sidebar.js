@@ -1,14 +1,9 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { setSelectedOption } from "../../redux/actions";
+import "../../App.css";
+import { useState } from "react";
 
-import {
-  Card,
-  Typography,
-  List,
-  ListItem,
-  ListItemPrefix,
-} from "@material-tailwind/react";
 import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined";
 import CorporateFareOutlinedIcon from "@mui/icons-material/CorporateFareOutlined";
 import QrCodeOutlinedIcon from "@mui/icons-material/QrCodeOutlined";
@@ -22,75 +17,106 @@ import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 
 export function Sidebar() {
   const dispatch = useDispatch();
+  const [activeItem, setActiveItem] = useState(null);
 
-  const handleSidebarClick = (option) => {
+  const handleSidebarClick = (option, clickedItem) => {
     dispatch(setSelectedOption(option));
+    setActiveItem(clickedItem);
   };
   return (
-    <Card className="h-[calc(95vh-2rem)] w-1/5 max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5">
-      <List>
-        <ListItem onClick={() => handleSidebarClick("Dashboard")}>
-          <ListItemPrefix>
-            <DashboardOutlinedIcon className="" />
-          </ListItemPrefix>
+    <div class="sidebar">
+      <ul>
+        <li
+          className={activeItem === 1 ? "active" : ""}
+          onClick={() => handleSidebarClick("Dashboard", 1)}
+        >
+          <span class="icon">
+            <DashboardOutlinedIcon />
+          </span>
           Dashboard
-        </ListItem>
-        <ListItem onClick={() => handleSidebarClick("Organisation")}>
-          <ListItemPrefix>
-            <CorporateFareOutlinedIcon className="" />
-          </ListItemPrefix>
+        </li>
+        <li
+          className={activeItem === 2 ? "active" : ""}
+          onClick={() => handleSidebarClick("Organisation", 2)}
+        >
+          <span class="icon">
+            <CorporateFareOutlinedIcon />
+          </span>
           Organisation
-        </ListItem>
-        <ListItem onClick={() => handleSidebarClick("QR Code")}>
-          <ListItemPrefix>
-            <QrCodeOutlinedIcon className="" />
-          </ListItemPrefix>
+        </li>
+        <li
+          className={activeItem === 3 ? "active" : ""}
+          onClick={() => handleSidebarClick("QR Code", 3)}
+        >
+          <span class="icon">
+            <QrCodeOutlinedIcon />
+          </span>
           QR Code
-        </ListItem>
-        <ListItem onClick={() => handleSidebarClick("Customer")}>
-          <ListItemPrefix>
-            <PermIdentityOutlinedIcon className="" />
-          </ListItemPrefix>
+        </li>
+        <li
+          className={activeItem === 4 ? "active" : ""}
+          onClick={() => handleSidebarClick("Customer", 4)}
+        >
+          <span class="icon">
+            <PermIdentityOutlinedIcon />
+          </span>
           Customer
-        </ListItem>
-
-        <ListItem onClick={() => handleSidebarClick("Food & Beverages")}>
-          <ListItemPrefix>
-            <RestaurantOutlinedIcon className="" />
-          </ListItemPrefix>
+        </li>
+        <li
+          className={activeItem === 5 ? "active" : ""}
+          onClick={() => handleSidebarClick("Food & Beverages", 5)}
+        >
+          <span class="icon">
+            <RestaurantOutlinedIcon />
+          </span>
           Food & Beverages
-        </ListItem>
-        <ListItem onClick={() => handleSidebarClick("Room Services")}>
-          <ListItemPrefix>
-            <RoomServiceOutlinedIcon className="" />
-          </ListItemPrefix>
+        </li>
+        <li
+          className={activeItem === 6 ? "active" : ""}
+          onClick={() => handleSidebarClick("Room Services", 6)}
+        >
+          <span class="icon">
+            <RoomServiceOutlinedIcon />
+          </span>
           Room Services
-        </ListItem>
-        <ListItem onClick={() => handleSidebarClick("Complaint")}>
-          <ListItemPrefix>
-            <SupportAgentOutlinedIcon className="" />
-          </ListItemPrefix>
+        </li>
+        <li
+          className={activeItem === 7 ? "active" : ""}
+          onClick={() => handleSidebarClick("Complaint", 7)}
+        >
+          <span class="icon">
+            <SupportAgentOutlinedIcon />
+          </span>
           Complaint
-        </ListItem>
-        <ListItem onClick={() => handleSidebarClick("Feedback")}>
-          <ListItemPrefix>
-            <ChatOutlinedIcon className="" />
-          </ListItemPrefix>
+        </li>
+        <li
+          className={activeItem === 8 ? "active" : ""}
+          onClick={() => handleSidebarClick("Feedback", 8)}
+        >
+          <span class="icon">
+            <ChatOutlinedIcon />
+          </span>
           Feedback
-        </ListItem>
-        <ListItem onClick={() => handleSidebarClick("Terms")}>
-          <ListItemPrefix>
-            <GroupsOutlinedIcon className="" />
-          </ListItemPrefix>
+        </li>
+        <li
+          className={activeItem === 9 ? "active" : ""}
+          onClick={() => handleSidebarClick("Teams", 9)}
+        >
+          <span class="icon">
+            <GroupsOutlinedIcon />
+          </span>
           Teams
-        </ListItem>
-        <ListItem onClick={() => handleSidebarClick("Logout")}>
-          <ListItemPrefix>
-            <LogoutOutlinedIcon className="" />
-          </ListItemPrefix>
+        </li>
+        <li
+          className={activeItem === 10 ? "active" : ""}
+          onClick={() => handleSidebarClick("Logout", 10)}
+        >
+          <span class="icon">
+            <LogoutOutlinedIcon />
+          </span>
           Logout
-        </ListItem>
-      </List>
-    </Card>
+        </li>
+      </ul>
+    </div>
   );
 }
