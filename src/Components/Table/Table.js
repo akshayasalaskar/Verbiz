@@ -75,15 +75,15 @@ export function Table() {
     }
   };
   return (
-    <Card className=" w-full h-[calc(95vh-2rem)] bg-customgray  ">
+    <Card className=" w-full h-[calc(95vh-2rem)] overflow-x-auto bg-customgray  ">
       <CardHeader
         floated={false}
         shadow={false}
         className="rounded-none flex justify-start items-center p-3 "
       >
-        <div className=" ">
-          <div className="flex flex-col  bg-customwhite justify-between md:flex-row md:items-center">
-            <div className="border border-blue-gray-100  p-2 mr-2 rounded-md">
+        <div className="mb-4 flex flex-col md:flex-row gap-8 md:items-center">
+          <div className="flex flex-col bg-customwhite justify-between md:flex-row md:items-center">
+            <div className="border border-blue-gray-100 p-2 mr-2 rounded-md">
               <select
                 id="selectOptions"
                 value={selectedOption}
@@ -113,7 +113,7 @@ export function Table() {
           </div>
         </div>
       </CardHeader>
-      <CardBody className=" mx-4 overflow-hidden px-0">
+      <CardBody className=" mx-4 w-full overflow-x-auto px-0">
         <table className="w-full min-w-max table-auto text-left  bg-customwhite ">
           <thead>
             <tr>
