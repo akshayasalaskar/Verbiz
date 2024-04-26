@@ -7,6 +7,13 @@ body {
   padding: 0;
   font-family: Arial, sans-serif;
 }
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  scrollbar-width: none;
+}
 .sidebar {
   width: 20rem;
   max-width: 20rem;

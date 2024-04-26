@@ -14,6 +14,7 @@ import {
   CardFooter,
   Input,
 } from "@material-tailwind/react";
+import "../../App.css";
 
 import { TABLE_ROWS } from "./data";
 import { TABLE_HEAD } from "./data";
@@ -113,7 +114,7 @@ export function Table() {
           </div>
         </div>
       </CardHeader>
-      <CardBody className=" mx-4 w-full overflow-x-auto px-0">
+      <CardBody className=" p-6 mx-4 overflow-x-auto scrollbar-w-0 px-0">
         <table className="w-full min-w-max table-auto text-left  bg-customwhite ">
           <thead>
             <tr>
